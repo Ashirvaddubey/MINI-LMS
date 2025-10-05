@@ -83,8 +83,10 @@ A modern, beautiful Learning Management System (LMS) built with React, Next.js, 
 
 ## 📝 Notes
 
-- The backend folder contains only placeholder files - no backend implementation is included
-- All data is currently mocked in `lib/mock-data.ts`
+- Frontend deploys to Vercel; backend deploys to Railway.
+- Vercel ignores `backend/` via `.vercelignore` so only Next.js builds.
+- Backend has its own `backend/package.json` and `Procfile` for Railway.
+- Configure environment variables in each platform separately.
 - The role switcher in the navbar is for demo purposes only
 - In a production app, you would need to implement:
   - User authentication
@@ -94,6 +96,25 @@ A modern, beautiful Learning Management System (LMS) built with React, Next.js, 
   - Real-time progress tracking
 
 ## 🎓 Pages Overview
+
+## 🚀 Deployment
+
+### Backend on Railway
+- Create a new Railway project from this repo, but set the service root to `backend/`.
+- Railway will detect `backend/package.json` and use `npm start` (Procfile `web: node server.js`).
+- Required env vars:
+  - `MONGO_URL`
+  - `JWT_SECRET`
+  - `JWT_REFRESH_SECRET`
+- Expose the service; note the public URL, e.g. `https://mini-lms-api.up.railway.app`.
+
+### Frontend on Vercel
+- Import the repo into Vercel.
+- Framework preset: Next.js. Build command: `next build`. Output: `.next`.
+- Root stays at repo root; `.vercelignore` prevents uploading `backend/`.
+- Set env var `NEXT_PUBLIC_API_BASE` to your Railway backend URL (e.g. `https://mini-lms-api.up.railway.app`).
+- Redeploy; frontend will proxy `/api/*` to the backend via `next.config.mjs` rewrites.
+
 
 - `/courses` - Browse all available courses
 - `/courses/[id]` - View course details and lessons

@@ -1,0 +1,8 @@
+{
+  "name": "Mini LMS",
+  "version": "1.0.0",
+  "backend": "http://localhost:4000",
+  "api_base": "/api"
+}
+
+

@@ -9,6 +9,8 @@
     "start": "next start",
     "server": "cross-env NODE_ENV=development node backend/server.js",
     "dev:all": "cross-env NODE_ENV=development concurrently \"pnpm:server\" \"pnpm:dev\"",
+    "start:backend": "node backend/server.js",
+    "start:frontend": "next start",
     "seed": "node backend/seed.js"
   },
   "dependencies": {

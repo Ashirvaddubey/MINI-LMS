@@ -1,0 +1,6 @@
+# Exclude backend from Vercel deployments
+backend/
+**/node_modules/**
+**/.env*
+
+

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import Link from "next/link"
 import { BookOpen, Loader2 } from "lucide-react"
 
@@ -17,12 +16,11 @@ export default function SignupPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
-  const [role, setRole] = useState<"learner" | "creator" | "admin">("learner")
   const { signup, isLoading } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    await signup(email, password, name, role)
+    await signup(email, password, name)
   }
 
   return (
@@ -86,34 +84,7 @@ export default function SignupPage() {
                 />
               </div>
 
-              <div className="space-y-3">
-                <Label>I want to join as</Label>
-                <RadioGroup value={role} onValueChange={(value: any) => setRole(value)} className="space-y-3">
-                  <div className="flex items-center space-x-3 border rounded-lg p-3 hover:bg-accent/50 transition-colors cursor-pointer">
-                    <RadioGroupItem value="learner" id="learner" />
-                    <Label htmlFor="learner" className="flex-1 cursor-pointer">
-                      <div className="font-semibold">Learner</div>
-                      <div className="text-xs text-muted-foreground">Take courses and earn certificates</div>
-                    </Label>
-                  </div>
-
-                  <div className="flex items-center space-x-3 border rounded-lg p-3 hover:bg-accent/50 transition-colors cursor-pointer">
-                    <RadioGroupItem value="creator" id="creator" />
-                    <Label htmlFor="creator" className="flex-1 cursor-pointer">
-                      <div className="font-semibold">Creator</div>
-                      <div className="text-xs text-muted-foreground">Create and publish courses</div>
-                    </Label>
-                  </div>
-
-                  <div className="flex items-center space-x-3 border rounded-lg p-3 hover:bg-accent/50 transition-colors cursor-pointer">
-                    <RadioGroupItem value="admin" id="admin" />
-                    <Label htmlFor="admin" className="flex-1 cursor-pointer">
-                      <div className="font-semibold">Admin</div>
-                      <div className="text-xs text-muted-foreground">Manage and review courses</div>
-                    </Label>
-                  </div>
-                </RadioGroup>
-              </div>
+              {/* Role selection removed; backend defaults new users to learner */}
             </CardContent>
 
             <CardFooter className="flex flex-col gap-4">

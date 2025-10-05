@@ -2,6 +2,13 @@
 
 A modern, beautiful Learning Management System (LMS) built with React, Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.
 
+## 🔗 Live Deployments
+
+- Frontend (Vercel): [mini-lms-drab.vercel.app](https://mini-lms-drab.vercel.app/)
+- Backend (Render): [mini-lms-cjy5.onrender.com](https://mini-lms-cjy5.onrender.com)
+
+The frontend is configured to call the backend via `NEXT_PUBLIC_API_BASE` and the rewrite defined in `next.config.mjs`.
+
 ## 🎯 Features
 
 ### For Learners
@@ -71,6 +78,13 @@ A modern, beautiful Learning Management System (LMS) built with React, Next.js, 
    \`\`\`
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+For production, set in your hosting provider (e.g. Vercel):
+
+```
+NEXT_PUBLIC_API_BASE=https://mini-lms-cjy5.onrender.com
+```
+
 
 ## 🔧 Tech Stack
 
